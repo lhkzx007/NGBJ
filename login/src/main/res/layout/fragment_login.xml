@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/login_img_phone_info"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:src="@mipmap/mifeng" />
+
+    <Button
+        android:id="@+id/login_btn_phone_submit"
+        android:layout_width="335dp"
+        android:layout_height="44dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="343dp"
+        android:background="@drawable/bg_sel_enabled"
+        android:enabled="false"
+        android:text="使用本机号码一键登录"
+        android:textColor="#ffffff"
+        android:textSize="14sp" />
+
+    <CheckBox
+        android:id="@+id/login_rb_protocol"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/login_btn_phone_submit"
+        android:layout_below="@+id/login_btn_phone_submit"
+        android:layout_marginTop="10dp"
+        android:button="@null"
+        android:gravity="center_vertical"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="登录同意 &lt;XXX协议&gt; 和 &lt;通行证服务协议&gt;"
+        android:textColor="#999999"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/login_tv_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="@string/info_password_login"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#999999" />
+
+        <TextView
+            android:id="@+id/login_tv_phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/info_phone_login"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+</RelativeLayout>
