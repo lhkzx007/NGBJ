@@ -3,6 +3,7 @@ package com.ngbj.login
 import android.content.Intent
 import android.os.Bundle
 import com.ngbj.base.BaseActivity
+import com.ngbj.base.addFragment
 import com.ngbj.login.fragment.AKeyOAuthFragment
 
 /**
@@ -21,8 +22,6 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun initView() {
-//        var phoneNubmer = intent.getStringExtra(KEY_PHONE_NUMBER)
-
         addFragment(AKeyOAuthFragment(), R.id.login_root)
     }
 

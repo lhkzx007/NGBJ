@@ -6,20 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ngbj.base.BaseFragment
+import com.ngbj.base.inflate
 import com.ngbj.home.R
 import kotlinx.android.synthetic.main.frg_one.*
 
 /**
  * Created by zack on 2018/8/16
  */
-class OneFragment : BaseFragment() {
+class TwoFragment : BaseFragment() {
+
     companion object {
-        const val TAG = "OneFragment"
+        const val TAG = "TwoFragment"
     }
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.frg_one,container,false)
+        return container?.inflate(R.layout.frg_one)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,7 +34,7 @@ class OneFragment : BaseFragment() {
 
     override fun onFragmentVisibleChange(isVisible: Boolean) {
         super.onFragmentVisibleChange(isVisible)
-        Log.i(TAG,"  isVisible -> $isVisible")
+        Log.i(TAG, "  isVisible -> $isVisible")
     }
 
 }

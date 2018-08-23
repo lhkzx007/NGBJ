@@ -12,13 +12,13 @@ import kotlinx.android.synthetic.main.frg_one.*
 /**
  * Created by zack on 2018/8/16
  */
-class OneFragment : BaseFragment() {
+class FourFragment : BaseFragment() {
     companion object {
-        const val TAG = "OneFragment"
+        const val TAG = "FourFragment"
     }
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        
         return inflater.inflate(R.layout.frg_one,container,false)
     }
 
