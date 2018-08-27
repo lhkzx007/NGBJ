@@ -16,6 +16,10 @@ fun ViewGroup.inflate(layoutRes: Int): View {
     return LayoutInflater.from(context).inflate(layoutRes, this, false)
 }
 
+ fun View.find(resId: Int) : View  {
+     return findViewById(resId)
+ }
+
 /**
  * 扩展FragmentManager的方法
  */

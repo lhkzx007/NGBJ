@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#FFFFFF"
+    android:padding="20dp"
+    android:enabled="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:text="佳世客来得及佛"
+        android:id="@+id/work_name"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="发窘"
+        android:textSize="16sp"
+        android:textColor="#FF553B"
+        android:textStyle="bold"
+        android:id="@+id/work_reward"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="深圳 / 哈哈 / 哈哈"
+        android:id="@+id/work_conditions"
+        android:layout_below="@+id/work_name"
+        android:textColor="#666"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:text="8:00"
+        android:textColor="#666"
+        android:textSize="12sp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/work_reward"
+        android:id="@+id/work_release_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <View
+        android:id="@+id/work_line"
+        android:background="#F5F5F5"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/work_conditions"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <ImageView
+        android:layout_marginRight="10dp"
+        android:background="#50107F"
+        android:id="@+id/work_avatar"
+        android:layout_below="@+id/work_line"
+        android:layout_width="30dp"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:text="张二蛋"
+        android:textSize="14sp"
+        android:textColor="#333333"
+        android:layout_toRightOf="@+id/work_avatar"
+        android:layout_alignTop="@+id/work_avatar"
+        android:id="@+id/work_publisher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_toRightOf="@+id/work_avatar"
+        android:layout_below="@+id/work_publisher"
+        android:id="@+id/work_tag"
+        android:text="个人  偶奇偶 囧囧"
+        android:textColor="#999999"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

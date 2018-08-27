@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.ngbj.base.BaseActivity
 import com.ngbj.base.inflate
+import com.ngbj.base.utils.LogUtils
 import com.ngbj.home.adapter.ZFragmentPagerAdapter
 import com.ngbj.home.frg.FourFragment
 import com.ngbj.home.frg.OneFragment
@@ -87,13 +88,11 @@ class HomeActivity : BaseActivity() {
 
 
     private fun selectedItem(position: Int) {
-        Log.i(TAG, "selected position [$position] ")
-
+        LogUtils.i("selected position [$position] ")
         if (position > -1) {
-
             home_pager.currentItem = position
         } else {
-
+            LogUtils.i("发布信息")
         }
     }
 }

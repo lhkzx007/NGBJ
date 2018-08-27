@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.ngbj.base.BaseFragment
 import com.ngbj.home.R
-import kotlinx.android.synthetic.main.frg_one.*
+import kotlinx.android.synthetic.main.frg_four.*
 
 /**
  * Created by zack on 2018/8/16
@@ -18,8 +18,7 @@ class FourFragment : BaseFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        
-        return inflater.inflate(R.layout.frg_one,container,false)
+        return inflater.inflate(R.layout.frg_four,container,false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

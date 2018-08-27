@@ -1,19 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:background="#999999"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <FrameLayout
+    <LinearLayout
+        android:orientation="horizontal"
         android:background="#1A8CFF"
         android:layout_width="match_parent"
         android:layout_height="44dp">
-
-    </FrameLayout>
+        <TextView
+            android:text="深圳"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
+            android:id="@+id/one_tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:background="@drawable/bg_search"
+            android:gravity="center_vertical"
+            android:text="搜索工作、公司、员工"
+            android:textSize="12sp"
+            android:textColor="#7fffffff"
+            android:id="@+id/one_tv_search"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:text="筛选"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:id="@+id/one_tv_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            />
+    </LinearLayout>
     <ImageView
+        android:scaleType="fitXY"
+        android:background="@mipmap/mifeng"
         android:id="@+id/one_img"
         android:layout_width="match_parent"
         android:layout_height="160dp"
         />
+    <LinearLayout
+        android:background="#ffffff"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="54dp">
+        <TextView
+            android:text="找工作"
+            android:textColor="@color/tab_tv_sel"
+            android:textSize="16dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <View
+            android:layout_gravity="center_vertical"
+            android:background="#999999"
+            android:layout_width="2dp"
+            android:layout_height="35dp"/>
+        <TextView
+            android:text="找工人"
+            android:textSize="16dp"
+            android:textColor="@color/tab_tv_sel"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <View
+        android:background="#DDDDDD"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/one_ry_works"
+        android:background="#F5F5F5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
     <TextView
         android:id="@+id/frg_text"
         android:textColor="#FFFFFF"
@@ -21,5 +93,6 @@
         android:text="One"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    
 
 </LinearLayout>
