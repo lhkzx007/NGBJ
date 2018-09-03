@@ -35,8 +35,6 @@ class OneFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        frg_text.text = TAG
-
 
         one_filter_recommend.setOnClickListener { filterClick(it) }
         one_filter_location.setOnClickListener { filterClick(it) }
