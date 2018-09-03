@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.ngbj.base.Work
 import com.ngbj.base.inflate
-import com.ngbj.base.utils.LogUtils
 import com.ngbj.home.R
 import kotlinx.android.synthetic.main.item_work.view.*
 
