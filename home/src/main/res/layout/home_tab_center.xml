@@ -2,16 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="75dp"
-    android:background="#2242FF"
     android:clipChildren="false"
-    android:gravity="center_horizontal"
+    android:paddingBottom="7dp"
+    android:gravity="center_horizontal|bottom"
     android:orientation="vertical">
 
     <ImageView
+        android:src="@mipmap/ic_home_menu"
         android:id="@+id/tab_icon"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:background="#9988ff" />
+        android:layout_width="46dp"
+        android:layout_height="46dp" />
 
     <TextView
         android:id="@+id/tab_text"

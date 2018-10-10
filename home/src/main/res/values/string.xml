@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="head_behavior">com.ngbj.home.behavior.HeadBehavior</string>
-    <string name="content_behavior">com.ngbj.home.behavior.ContentBehavior</string>
+    <string name="behavior_head">com.ngbj.home.behavior.HeadBehavior</string>
+    <string name="behavior_content">com.ngbj.home.behavior.ContentBehavior</string>
+    <string name="behavior_search">com.ngbj.home.behavior.SearchBehavior</string>
 </resources>

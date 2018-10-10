@@ -23,6 +23,7 @@ open class BaseFragment : Fragment() {
     var isFirstVisible = false
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initVariable()
@@ -33,6 +34,9 @@ open class BaseFragment : Fragment() {
 //        Log.i(TAG, "onCreateView")
 //        return null
 //    }
+    open fun onBackPressed(): Boolean{
+        return false
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return super.onCreateView(inflater, container, savedInstanceState)

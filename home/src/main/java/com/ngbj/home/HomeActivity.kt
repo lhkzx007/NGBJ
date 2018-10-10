@@ -7,11 +7,12 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.ngbj.base.BaseActivity
+import com.ngbj.base.BaseFragment
 import com.ngbj.base.inflate
 import com.ngbj.base.utils.LogUtils
 import com.ngbj.home.adapter.ZFragmentPagerAdapter
 import com.ngbj.home.frg.FourFragment
-import com.ngbj.home.frg.OneFragment
+import com.ngbj.home.frg.HomeFragment
 import com.ngbj.home.frg.ThreeFragment
 import com.ngbj.home.frg.TwoFragment
 import kotlinx.android.synthetic.main.activity_home.*
@@ -35,18 +36,18 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun initViewPager() {
-        val fragments = arrayOf(OneFragment(), TwoFragment(), ThreeFragment(), FourFragment())
+        val fragments = arrayOf(HomeFragment(), TwoFragment(), ThreeFragment(), FourFragment())
         Log.i(TAG, "${fragments.size}")
         home_pager.adapter = ZFragmentPagerAdapter(supportFragmentManager, fragments)
         home_pager.currentItem = selectPosition
     }
 
     private fun init() {
-        addTab("分类")
-        addTab("消息")
+        addTab("首页",resId = R.drawable.sel_tab_home)
+        addTab("消息",resId = R.drawable.sel_tab_msg)
         addTab("发布", 0, -1, R.layout.home_tab_center)
-        addTab("公社")
-        addTab("我的")
+        addTab("公社",resId = R.drawable.sel_tab_circle)
+        addTab("我的",resId = R.drawable.sel_tab_my)
     }
 
     private fun addTab(name: String, resId: Int = 0, int: Int = count++, resLayout: Int = R.layout.home_tab_view) {
@@ -93,6 +94,13 @@ class HomeActivity : BaseActivity() {
             home_pager.currentItem = position
         } else {
             LogUtils.i("发布信息")
+        }
+    }
+
+    override fun onBackPressed() {
+        val fragment=(home_pager.adapter as ZFragmentPagerAdapter).getItem(selectPosition) as BaseFragment
+        if(!fragment.onBackPressed()){
+            super.onBackPressed()
         }
     }
 }

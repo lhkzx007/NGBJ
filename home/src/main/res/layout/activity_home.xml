@@ -1,22 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:orientation="vertical">
 
     <android.support.v4.view.ViewPager
-        android:background="#558080"
         android:id="@+id/home_pager"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/home_tab" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/bg_home_menu" />
+
     <LinearLayout
-        android:background="#990099"
-        android:gravity="bottom"
         android:id="@+id/home_tab"
-        android:clipChildren="false"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:clipChildren="false"
+        android:gravity="bottom"
         android:orientation="horizontal" />
-</LinearLayout>
+</RelativeLayout>

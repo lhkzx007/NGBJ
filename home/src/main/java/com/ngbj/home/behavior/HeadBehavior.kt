@@ -1,25 +1,30 @@
 package com.ngbj.home.behavior
 
+import android.annotation.TargetApi
 import android.content.Context
+import android.os.Build
 import android.os.Parcelable
 import android.support.design.widget.CoordinatorLayout
+import android.support.v4.view.ViewCompat
 import android.support.v4.view.WindowInsetsCompat
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Scroller
+import com.ngbj.base.utils.LogUtils
+import com.ngbj.home.behavior.Utils.range
 
 /**
  * Created by zack on 2018/9/3
  */
 class HeadBehavior(context: Context?, attrs: AttributeSet?) : CoordinatorLayout.Behavior<View>(context, attrs) {
-    init {
-
-    }
-
-    //可以重写这个方法对子View 进行重新布局
-    override fun onLayoutChild(parent: CoordinatorLayout?, child: View?, layoutDirection: Int): Boolean {
-        return super.onLayoutChild(parent, child, layoutDirection)
-    }
+    private val mScroller: Scroller = Scroller(context)
+    private val mHeight = Utils.getScrollHeight(context!!)
+    private var mChildView: View? = null
+    private var axes: Int = 0
+    private var velocityY: Float = 0f
+    private var mScrollRunnable: ScrollerRunnable? = null
+    private var mStartHeaderHidden: Boolean = false
 
     /**
      *  当coordinatorLayout 的子View试图开始嵌套滑动的时候被调用。当返回值为true的时候表明
@@ -35,8 +40,10 @@ class HeadBehavior(context: Context?, attrs: AttributeSet?) : CoordinatorLayout.
      *                         {@link ViewCompat#SCROLL_AXIS_VERTICAL}
      * @return
      */
-    override fun onStartNestedScroll(coordinatorLayout: CoordinatorLayout?, child: View?, directTargetChild: View?, target: View?, nestedScrollAxes: Int): Boolean {
-        return super.onStartNestedScroll(coordinatorLayout, child, directTargetChild, target, nestedScrollAxes)
+    override fun onStartNestedScroll(coordinatorLayout: CoordinatorLayout?, child: View, directTargetChild: View, target: View, nestedScrollAxes: Int): Boolean {
+        this.mChildView = child
+        this.axes = nestedScrollAxes
+        return (axes == ViewCompat.SCROLL_AXIS_VERTICAL) && !isClose()
     }
 
     /**
@@ -61,11 +68,26 @@ class HeadBehavior(context: Context?, attrs: AttributeSet?) : CoordinatorLayout.
      * @param velocityY y 方向的速度
      * @return
      */
-    override fun onNestedFling(coordinatorLayout: CoordinatorLayout?, child: View?, target: View?, velocityX: Float, velocityY: Float, consumed: Boolean): Boolean {
+    override fun onNestedFling(coordinatorLayout: CoordinatorLayout, child: View, target: View, velocityX: Float, velocityY: Float, consumed: Boolean): Boolean {
+        this.velocityY = velocityY
         return super.onNestedFling(coordinatorLayout, child, target, velocityX, velocityY, consumed)
     }
 
-    override fun onInterceptTouchEvent(parent: CoordinatorLayout?, child: View?, ev: MotionEvent?): Boolean {
+    override fun onInterceptTouchEvent(parent: CoordinatorLayout, child: View, ev: MotionEvent): Boolean {
+        when (ev.action) {
+            MotionEvent.ACTION_DOWN -> {
+                LogUtils.i(" ACTION_DOWN ")
+                mStartHeaderHidden = isClose()
+            }
+            MotionEvent.ACTION_MOVE -> {
+                LogUtils.i(" ACTION_MOVE ")
+                if (isClose() && !mStartHeaderHidden) parent.onStartNestedScroll(parent, child, axes)
+            }
+            MotionEvent.ACTION_UP -> {
+                LogUtils.i(" ACTION_UP ")
+                handlerActionUp()
+            }
+        }
         return super.onInterceptTouchEvent(parent, child, ev)
     }
 
@@ -76,11 +98,9 @@ class HeadBehavior(context: Context?, attrs: AttributeSet?) : CoordinatorLayout.
      * @param dependency
      * @return
      */
-    override fun onDependentViewChanged(parent: CoordinatorLayout?, child: View?, dependency: View?): Boolean {
+    override fun onDependentViewChanged(parent: CoordinatorLayout, child: View, dependency: View): Boolean {
         return super.onDependentViewChanged(parent, child, dependency)
     }
-
-
 
     /**
      * 嵌套滚动发生之前被调用
@@ -95,8 +115,13 @@ class HeadBehavior(context: Context?, attrs: AttributeSet?) : CoordinatorLayout.
      * @param dy  用户竖直方向的滚动距离
      * @param consumed
      */
-    override fun onNestedPreScroll(coordinatorLayout: CoordinatorLayout?, child: View?, target: View?, dx: Int, dy: Int, consumed: IntArray?) {
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    override fun onNestedPreScroll(coordinatorLayout: CoordinatorLayout, child: View, target: View?, dx: Int, dy: Int, consumed: IntArray) {
         super.onNestedPreScroll(coordinatorLayout, child, target, dx, dy, consumed)
+        //降低移动距离，防止抖动,ScrollFriction太大还是会抖动。。。。
+        val tempDy = dy.toFloat() / (Utils.getScrollFriction() * 2)
+        child.translationY = range(-mHeight, 0f, child.translationY - tempDy)
+        consumed[1] = dy
     }
 
     /**
@@ -111,10 +136,6 @@ class HeadBehavior(context: Context?, attrs: AttributeSet?) : CoordinatorLayout.
      */
     override fun onNestedScroll(coordinatorLayout: CoordinatorLayout?, child: View?, target: View?, dxConsumed: Int, dyConsumed: Int, dxUnconsumed: Int, dyUnconsumed: Int) {
         super.onNestedScroll(coordinatorLayout, child, target, dxConsumed, dyConsumed, dxUnconsumed, dyUnconsumed)
-    }
-
-    override fun onDependentViewRemoved(parent: CoordinatorLayout?, child: View?, dependency: View?) {
-        super.onDependentViewRemoved(parent, child, dependency)
     }
 
     /**
@@ -146,39 +167,36 @@ class HeadBehavior(context: Context?, attrs: AttributeSet?) : CoordinatorLayout.
         super.onNestedScrollAccepted(coordinatorLayout, child, directTargetChild, target, nestedScrollAxes)
     }
 
-    override fun onTouchEvent(parent: CoordinatorLayout?, child: View?, ev: MotionEvent?): Boolean {
-        return super.onTouchEvent(parent, child, ev)
+    //可以重写这个方法对子View 进行重新布局
+    override fun onLayoutChild(parent: CoordinatorLayout?, child: View?, layoutDirection: Int): Boolean {
+        return super.onLayoutChild(parent, child, layoutDirection)
     }
 
-    override fun getScrimColor(parent: CoordinatorLayout?, child: View?): Int {
-        return super.getScrimColor(parent, child)
+    private fun createRunnable() {
+        LogUtils.i(" childView  $mChildView")
+        if (mScrollRunnable == null && mChildView != null)
+            mScrollRunnable = ScrollerRunnable(mScroller, mChildView!!, (mHeight).toInt())
     }
 
-    override fun onMeasureChild(parent: CoordinatorLayout?, child: View?, parentWidthMeasureSpec: Int, widthUsed: Int, parentHeightMeasureSpec: Int, heightUsed: Int): Boolean {
-        return super.onMeasureChild(parent, child, parentWidthMeasureSpec, widthUsed, parentHeightMeasureSpec, heightUsed)
+    private fun handlerActionUp() {
+        createRunnable()
+        if (velocityY > 1000) {
+            mScrollRunnable?.scrollToClose()
+            return
+        }
+        if (mChildView!=null && Math.abs(mChildView!!.translationY) < (mHeight / 2)) {
+            mScrollRunnable?.scrollToOpen()
+        } else {
+            mScrollRunnable?.scrollToClose()
+        }
     }
 
-    override fun isDirty(parent: CoordinatorLayout?, child: View?): Boolean {
-        return super.isDirty(parent, child)
+    open fun isClose(): Boolean {
+        return mChildView != null && mChildView!!.translationY.toInt() <= -mHeight.toInt()
     }
 
-    override fun onNestedPreFling(coordinatorLayout: CoordinatorLayout?, child: View?, target: View?, velocityX: Float, velocityY: Float): Boolean {
-        return super.onNestedPreFling(coordinatorLayout, child, target, velocityX, velocityY)
-    }
-
-    override fun onRestoreInstanceState(parent: CoordinatorLayout?, child: View?, state: Parcelable?) {
-        super.onRestoreInstanceState(parent, child, state)
-    }
-
-    override fun blocksInteractionBelow(parent: CoordinatorLayout?, child: View?): Boolean {
-        return super.blocksInteractionBelow(parent, child)
-    }
-
-    override fun onSaveInstanceState(parent: CoordinatorLayout?, child: View?): Parcelable {
-        return super.onSaveInstanceState(parent, child)
-    }
-
-    override fun getScrimOpacity(parent: CoordinatorLayout?, child: View?): Float {
-        return super.getScrimOpacity(parent, child)
+    open fun scrollToOpen() {
+        createRunnable()
+        mScrollRunnable?.scrollToOpen()
     }
 }

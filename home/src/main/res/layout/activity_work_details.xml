@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -29,7 +30,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#999999"
+        android:background="#EDEDED"
         android:scrollbars="none">
 
         <LinearLayout
@@ -37,186 +38,210 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:padding="20dp">
-
-                <TextView
-                    android:id="@+id/work_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="佳世客来得及佛"
-                    android:textColor="#000000"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/work_reward"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="发窘"
-                    android:textColor="#FF553B"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/work_tag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/work_name"
-                    android:text="个人  偶奇偶 囧囧"
-                    android:textColor="#666"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/work_release_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/work_reward"
-                    android:text="8:00"
-                    android:textColor="#666"
-                    android:textSize="12sp" />
-
-                <View
-                    android:id="@+id/work_line"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/work_tag"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="17dp"
-                    android:background="#F5F5F5" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:enabled="true"
+                app:cardBackgroundColor="#ffffff"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="false"
+                app:contentPadding="13dp">
 
                 <RelativeLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/work_line">
-
-                    <View
-                        android:id="@+id/work_img_location"
-                        android:layout_width="11dp"
-                        android:layout_height="16dp"
-                        android:background="#985242" />
+                    android:background="#FFFFFF">
 
                     <TextView
-                        android:id="@+id/work_tv_area"
+                        android:id="@+id/work_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/work_img_location"
-                        android:text="市-区-街道"
-                        android:textColor="#333333"
-                        android:textSize="14sp" />
+                        android:text="佳世客来得及佛"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/work_tv_location"
+                        android:id="@+id/work_reward"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/work_img_location"
-                        android:text="xxxxx大厦B333-111"
-                        android:textColor="#aaaaaa"
-                        android:textSize="11sp" />
-
-                    <View
-                        android:layout_width="4dp"
-                        android:layout_height="8dp"
                         android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:background="#489163" />
-                </RelativeLayout>
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="#FFFFFF"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="72dp"
-                    android:paddingBottom="20dp"
-                    android:paddingTop="20dp">
-
-                    <ImageView
-                        android:id="@+id/work_avatar"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_marginRight="10dp"
-                        android:background="#50107F" />
+                        android:text="发窘"
+                        android:textColor="#FF553B"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/work_publisher"
+                        android:id="@+id/work_tag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignTop="@+id/work_avatar"
-                        android:layout_toRightOf="@+id/work_avatar"
-                        android:text="张二蛋"
-                        android:textColor="#333333"
-                        android:textSize="14sp" />
+                        android:layout_below="@+id/work_name"
+                        android:text="个人  偶奇偶 囧囧"
+                        android:textColor="#666"
+                        android:textSize="12sp" />
 
                     <TextView
-                        android:id="@+id/work_info"
+                        android:id="@+id/work_release_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/work_publisher"
-                        android:layout_toRightOf="@+id/work_avatar"
-                        android:text="招聘者 最近活跃"
-                        android:textColor="#999999"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/work_reward"
+                        android:text="8:00"
+                        android:textColor="#666"
                         android:textSize="12sp" />
 
                     <View
-                        android:layout_width="4dp"
-                        android:layout_height="8dp"
-                        android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true"
-                        android:background="#489163" />
+                        android:id="@+id/work_line"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/work_tag"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="17dp"
+                        android:background="#F5F5F5" />
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/work_line">
+
+                        <View
+                            android:id="@+id/work_img_location"
+                            android:layout_marginRight="5dp"
+                            android:layout_width="11dp"
+                            android:layout_height="16dp"
+                            android:background="#985242" />
+
+                        <TextView
+                            android:id="@+id/work_tv_area"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/work_img_location"
+                            android:text="市-区-街道"
+                            android:textColor="#333333"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/work_tv_location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/work_img_location"
+                            android:text="xxxxx大厦B333-111"
+                            android:textColor="#aaaaaa"
+                            android:textSize="11sp" />
+
+                        <View
+                            android:layout_width="4dp"
+                            android:layout_height="8dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="#489163" />
+                    </RelativeLayout>
                 </RelativeLayout>
+            </android.support.v7.widget.CardView>
 
-                <View
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:enabled="true"
+                app:cardBackgroundColor="#ffffff"
+                app:cardCornerRadius="10dp"
+                app:cardPreventCornerOverlap="false"
+                app:contentPadding="13dp">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_below="@+id/work_tag"
-                    android:layout_marginBottom="20dp"
-                    android:layout_marginTop="20dp"
-                    android:background="#F5F5F5" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="职位详情"
-                    android:textColor="#333333"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="jkldfjoajsdofjiosdjfoisjafjasdojfios\ndjapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评djapfjsdjfasdjfijsdfjoasdjfopjasdpfjiasdjifosdjfojasdoifjoasjdofjasdojfjoxcvjoi加哦号JPG奇偶ID房管局哦评价哦号哦钢结构号偶家迪欧放假暗色调房间爱上迪欧放假吗开了房萨克雷福建省的哦啊见佛喷水电机发泡剂暗色调批发价阿善动发窘暗色调放假哦阿萨德见覅偶叫叫囧囧放假啊是滴哦飞机票圣诞节阿佛机票"
-                    android:textColor="#999999"
-                    android:textSize="12sp" />
-            </LinearLayout>
+                    android:background="#FFFFFF"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:paddingBottom="20dp"
+                        android:paddingTop="20dp">
+
+                        <ImageView
+                            android:id="@+id/work_avatar"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="10dp"
+                            android:background="#50107F" />
+
+                        <TextView
+                            android:id="@+id/work_publisher"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/work_avatar"
+                            android:layout_toRightOf="@+id/work_avatar"
+                            android:text="张二蛋"
+                            android:textColor="#333333"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/work_info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/work_publisher"
+                            android:layout_toRightOf="@+id/work_avatar"
+                            android:text="招聘者 最近活跃"
+                            android:textColor="#999999"
+                            android:textSize="12sp" />
+
+                        <View
+                            android:layout_width="4dp"
+                            android:layout_height="8dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="#489163" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/work_tag"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="20dp"
+                        android:background="#F5F5F5" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="职位详情"
+                        android:textColor="#333333"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="需要参与的工作有： 【前期】 IP调研与概念梳理； 【中期】 对于IP设计元素的提炼以及周边产品的平面部分进行设计，包括图案，图形，元素使用，色彩，排 版，字体等； 【后期】 提案展示、制作文件与设计手册输出； 岗位要求： 1-平面设计功底扎实，良好的设计技巧，对结构、线条、色彩等的把控； 2-精通各种绘画软件来表现你的想法（Photoshop、AI等等）； 3-拥有宽广的行业（平面设计、插画、产品）视野与时尚的审美标准； 4-设计思维严谨，对作品有高要求； 5-具备手绘原创能力或有较强产品设计能力优先； 需提供个人简历以及作品集，以及需要配合进行专业能力测试。 "
+                        android:textColor="#999999"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="#ffffff"
-                android:orientation="vertical"
-                android:padding="20dp">
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="54dp"
-                    android:layout_height="22dp"
-                    android:background="#1A8CFF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
                     android:gravity="center"
                     android:text="推荐职位"
-                    android:textColor="#ffffff"
-                    android:textSize="11sp" />
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/work_ry_recommend"

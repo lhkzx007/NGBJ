@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#999999"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/home_fl_head"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/head_height"
+        android:background="#1A8CFF"
+        android:paddingTop="@dimen/search_height"
+        app:layout_behavior="@string/behavior_head">
+
+        <ImageView
+            android:id="@+id/home_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@mipmap/mifeng" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/home_fl_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_height"
+        android:background="#1A8CFF"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_behavior="@string/behavior_search">
+
+        <TextView
+            android:id="@+id/home_tv_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_search"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="搜索工作、公司、员工"
+            android:textColor="#7fffffff"
+            android:textSize="12sp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f5f5f5"
+        android:orientation="vertical"
+        app:layout_behavior="@string/behavior_content">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/home_switch_tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabIndicatorHeight="0dp">
+
+            <!--<android.support.design.widget.TabItem-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="找工作" />-->
+
+            <!--<android.support.design.widget.TabItem-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="找工人" />-->
+        </android.support.design.widget.TabLayout>
+
+
+        <LinearLayout
+            android:id="@+id/home_ll_filter"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp">
+
+            <TextView
+                android:id="@+id/home_filter_recommend"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="推荐"
+                android:textColor="@color/tab_tv_sel"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/home_filter_location"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingRight="20dp"
+                android:text="深圳"
+                android:textColor="@color/tab_tv_sel"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/home_filter_classify"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingRight="20dp"
+                android:text="分类"
+                android:textColor="@color/tab_tv_sel"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/home_filter_requirements"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:text="要求"
+                android:textColor="@color/tab_tv_sel"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_ry_works"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F5F5F5"
+            android:paddingBottom="40dp" />
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
