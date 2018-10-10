@@ -11,7 +11,7 @@ import com.ngbj.base.BaseFragment
 import com.ngbj.base.inflate
 import com.ngbj.base.utils.LogUtils
 import com.ngbj.home.adapter.ZFragmentPagerAdapter
-import com.ngbj.home.frg.FourFragment
+import com.ngbj.home.frg.MyFragment
 import com.ngbj.home.frg.HomeFragment
 import com.ngbj.home.frg.ThreeFragment
 import com.ngbj.home.frg.TwoFragment
@@ -36,7 +36,7 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun initViewPager() {
-        val fragments = arrayOf(HomeFragment(), TwoFragment(), ThreeFragment(), FourFragment())
+        val fragments = arrayOf(HomeFragment(), TwoFragment(), ThreeFragment(), MyFragment())
         Log.i(TAG, "${fragments.size}")
         home_pager.adapter = ZFragmentPagerAdapter(supportFragmentManager, fragments)
         home_pager.currentItem = selectPosition
