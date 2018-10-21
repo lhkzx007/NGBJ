@@ -3,8 +3,9 @@
     android:layout_width="wrap_content"
     android:layout_height="75dp"
     android:clipChildren="false"
-    android:paddingBottom="7dp"
-    android:gravity="center_horizontal|bottom"
+    android:padding="7dp"
+    android:enabled="true"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <ImageView
@@ -14,6 +15,7 @@
         android:layout_height="46dp" />
 
     <TextView
+        android:text="发布"
         android:id="@+id/tab_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

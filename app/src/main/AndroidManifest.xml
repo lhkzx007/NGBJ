@@ -12,7 +12,7 @@
         android:icon="@mipmap/mifeng"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+        android:theme="@style/Theme.AppCompat"
         android:windowSoftInputMode="stateHidden|adjustResize">
         <activity android:name="com.ngbj.LauncherActivity">
 
@@ -20,6 +20,7 @@
         <activity android:name="com.ngbj.login.LoginActivity" />
         <activity android:name="com.ngbj.login.CertificationActivity" />
         <activity android:name="com.ngbj.home.WorkDetailsActivity" />
+        <activity android:name="com.ngbj.home.PublisherDetailsActivity" />
         <activity
             android:name="com.ngbj.home.HomeActivity"
             android:theme="@style/Theme.AppCompat">

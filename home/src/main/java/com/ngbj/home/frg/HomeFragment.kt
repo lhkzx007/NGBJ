@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import com.ngbj.base.*
 import com.ngbj.base.utils.LogUtils
@@ -42,10 +43,7 @@ class HomeFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         initTab()
 
-        home_filter_recommend.setOnClickListener { filterClick(it) }
-        home_filter_location.setOnClickListener { filterClick(it) }
-        home_filter_classify.setOnClickListener { filterClick(it) }
-        home_filter_requirements.setOnClickListener { filterClick(it) }
+        initFilterTab()
 
         mHeaderBehavior = (home_fl_head.layoutParams as CoordinatorLayout.LayoutParams).behavior as HeadBehavior
         initList()
@@ -68,6 +66,48 @@ class HomeFragment : BaseFragment() {
             LogUtils.i(" $poistion :  $work  ")
             startActivity(Intent(activity, WorkDetailsActivity::class.java))
         }
+    }
+
+    private fun initFilterTab() {
+//        home_filter_recommend.setOnClickListener { filterClick(it) }
+//        home_filter_location.setOnClickListener { filterClick(it) }
+//        home_filter_classify.setOnClickListener { filterClick(it) }
+//        home_filter_requirements.setOnClickListener { filterClick(it) }
+        home_ll_filter.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                HomeDialogFragment().show(fragmentManager, "test")
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                HomeDialogFragment().show(fragmentManager, "test")
+            }
+
+        })
+
+
+        newFilterTab("推荐")
+        newFilterTab("深圳")
+        newFilterTab("分类")
+        newFilterTab("要求")
+//        home_ll_filter.addTab("推荐",resLayout = R.layout.item_filter)
+//        home_ll_filter.addTab("深圳",resLayout = R.layout.item_filter)
+//        home_ll_filter.addTab("分类",resLayout = R.layout.item_filter)
+//        home_ll_filter.addTab("要求",resLayout = R.layout.item_filter)
+    }
+
+    private fun newFilterTab(title: String) {
+        val tab = home_ll_filter.newTab().setCustomView(R.layout.item_filter)
+        val tv = (tab.customView!!.find(R.id.tab_text) as TextView)
+        val icon = (tab.customView!!.find(R.id.tab_icon) as ImageView)
+        tv.text = title
+        tv.isSelected = false
+        icon.isSelected = false
+//        setTabSelect(tab, isSelected)
+        home_ll_filter.addTab(tab, false)
     }
 
     private fun initTab() {
@@ -137,12 +177,12 @@ class HomeFragment : BaseFragment() {
         val item = view as TextView
         LogUtils.i("click id(${item.id})  ${item.text}")
 
-        when (item) {
-            home_filter_recommend -> LogUtils.i("show pop")
-            home_filter_location -> LogUtils.i("跳转到定位页面")
-            home_filter_requirements -> LogUtils.i("显示要求弹窗")
-            home_filter_classify -> LogUtils.i("显示分类弹窗")
-        }
+//        when (item) {
+//            home_filter_recommend -> LogUtils.i("show pop")
+//            home_filter_location -> LogUtils.i("跳转到定位页面")
+//            home_filter_requirements -> LogUtils.i("显示要求弹窗")
+//            home_filter_classify -> LogUtils.i("显示分类弹窗")
+//        }
     }
 
 }

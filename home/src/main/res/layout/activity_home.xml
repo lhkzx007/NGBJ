@@ -17,7 +17,7 @@
         android:layout_alignParentBottom="true"
         android:background="@mipmap/bg_home_menu" />
 
-    <LinearLayout
+    <com.ngbj.home.widget.TabLayout
         android:id="@+id/home_tab"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -25,4 +25,13 @@
         android:clipChildren="false"
         android:gravity="bottom"
         android:orientation="horizontal" />
+
+    <include
+        android:id="@+id/home_tab_center"
+        layout="@layout/home_tab_center"
+        android:layout_width="wrap_content"
+        android:layout_height="78dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        />
 </RelativeLayout>

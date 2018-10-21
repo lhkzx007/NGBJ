@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="20dp"
+    android:enabled="true"
+    app:cardBackgroundColor="#ffffff"
+    app:cardCornerRadius="10dp"
+    app:cardPreventCornerOverlap="false"
+    app:contentPaddingLeft="15dp"
+    app:contentPaddingRight="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="74dp">
+
+        <ImageView
+            android:id="@+id/messages_avatar"
+            android:layout_centerVertical="true"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginRight="10dp"
+            android:background="#50107F" />
+
+        <TextView
+            android:gravity="top"
+            android:id="@+id/messages_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/messages_avatar"
+            android:layout_toRightOf="@+id/messages_avatar"
+            android:text="张二蛋"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/messages_new_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/messages_name"
+            android:layout_toRightOf="@+id/messages_avatar"
+            android:text="你好，我想应聘瓦工，请问可以吗工，请问可以吗 ？"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textColor="#999999"
+            android:textSize="12sp" />
+        <TextView
+            android:text="5:20"
+            android:layout_alignParentRight="true"
+            android:layout_alignBaseline="@+id/messages_name"
+            android:textSize="12sp"
+            android:textColor="#999999"
+            android:id="@+id/messages_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

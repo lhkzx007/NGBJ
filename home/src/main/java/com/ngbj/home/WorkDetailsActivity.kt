@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import com.ngbj.base.BaseActivity
 import com.ngbj.base.Work
 import com.ngbj.base.utils.LogUtils
@@ -20,7 +21,12 @@ class WorkDetailsActivity :BaseActivity(){
         initView()
     }
 
-
+    /**
+     *
+     */
+    fun startToPublisher(view :View){
+        startActivity(Intent(this,PublisherDetailsActivity::class.java))
+    }
 
     fun initView(){
         work_ry_recommend.isFocusable = false

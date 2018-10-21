@@ -4,7 +4,7 @@
     android:id="@+id/home_coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#999999"
+    android:background="@color/bg_color"
     android:orientation="vertical">
 
     <LinearLayout
@@ -51,7 +51,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#f5f5f5"
         android:orientation="vertical"
         app:layout_behavior="@string/behavior_content">
 
@@ -62,74 +61,29 @@
             app:tabIndicatorHeight="0dp">
 
             <!--<android.support.design.widget.TabItem-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="找工作" />-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="找工作" />-->
 
             <!--<android.support.design.widget.TabItem-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="找工人" />-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="找工人" />-->
         </android.support.design.widget.TabLayout>
 
 
-        <LinearLayout
+        <android.support.design.widget.TabLayout
             android:id="@+id/home_ll_filter"
             android:layout_width="match_parent"
-            android:layout_height="34dp"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp">
-
-            <TextView
-                android:id="@+id/home_filter_recommend"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="推荐"
-                android:textColor="@color/tab_tv_sel"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/home_filter_location"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:paddingRight="20dp"
-                android:text="深圳"
-                android:textColor="@color/tab_tv_sel"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/home_filter_classify"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:paddingRight="20dp"
-                android:text="分类"
-                android:textColor="@color/tab_tv_sel"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/home_filter_requirements"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_vertical|right"
-                android:text="要求"
-                android:textColor="@color/tab_tv_sel"
-                android:textSize="14sp" />
-        </LinearLayout>
+            app:tabIndicatorHeight="0dp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/home_ry_works"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#F5F5F5"
             android:paddingBottom="40dp" />
 
     </LinearLayout>

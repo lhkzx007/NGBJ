@@ -1,33 +1,28 @@
 package com.ngbj.home
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
+import android.support.v4.view.ViewPager
 import android.util.Log
-import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import com.ngbj.base.BaseActivity
 import com.ngbj.base.BaseFragment
-import com.ngbj.base.inflate
 import com.ngbj.base.utils.LogUtils
 import com.ngbj.home.adapter.ZFragmentPagerAdapter
 import com.ngbj.home.frg.MyFragment
 import com.ngbj.home.frg.HomeFragment
 import com.ngbj.home.frg.ThreeFragment
-import com.ngbj.home.frg.TwoFragment
+import com.ngbj.home.frg.MessagesFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 /**
  * Created by zack on 2018/8/15
  */
-class HomeActivity : BaseActivity() {
+class HomeActivity : BaseActivity(), ViewPager.OnPageChangeListener {
+
     companion object {
         const val TAG = "HomeActivity"
     }
 
-    private var count = 0
-    private var selectPosition = 0
-    private var selectedView: View? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -36,70 +31,59 @@ class HomeActivity : BaseActivity() {
     }
 
     private fun initViewPager() {
-        val fragments = arrayOf(HomeFragment(), TwoFragment(), ThreeFragment(), MyFragment())
+        val fragments = arrayOf(HomeFragment(), MessagesFragment(), ThreeFragment(), MyFragment())
         Log.i(TAG, "${fragments.size}")
         home_pager.adapter = ZFragmentPagerAdapter(supportFragmentManager, fragments)
-        home_pager.currentItem = selectPosition
+        home_pager.currentItem = 0
+        home_pager.addOnPageChangeListener(this)
     }
 
     private fun init() {
-        addTab("首页",resId = R.drawable.sel_tab_home)
-        addTab("消息",resId = R.drawable.sel_tab_msg)
-        addTab("发布", 0, -1, R.layout.home_tab_center)
-        addTab("公社",resId = R.drawable.sel_tab_circle)
-        addTab("我的",resId = R.drawable.sel_tab_my)
-    }
-
-    private fun addTab(name: String, resId: Int = 0, int: Int = count++, resLayout: Int = R.layout.home_tab_view) {
-        val item = home_tab.inflate(resLayout)
-        val text = item.findViewById(R.id.tab_text) as TextView
-        val icon = item.findViewById(R.id.tab_icon) as ImageView
-        text.text = name
-        if (resId > 0) {
-            icon.setImageResource(resId)
-        }
-        item.tag = int
-        val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(item.layoutParams)
-        params.width = 0
-        params.weight = 1f
-        home_tab.addView(item, params)
-        if (item.tag == selectPosition) {
-            item.selected(true)
-            selectedView = item
-        }
-        item.setOnClickListener {
-            val position = it.tag as Int
-            selectedItem(position)
-            if (position > -1 && position != selectPosition) {
-                selectedView?.selected(false)
-                it.selected(true)
-                selectedView = it
-                selectPosition = position
+        home_tab.setOnTabSelectedListener(object :com.ngbj.home.widget.TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(position: Int) {
+                LogUtils.i(TAG," ---onTabSelected- $position")
+                home_pager.currentItem = position
             }
 
-        }
-    }
+            override fun onTabUnselected(position: Int) {
+                LogUtils.i(TAG," ---onTabUnselected-  $position")
+            }
 
-    fun View.selected(isSelected: Boolean) {
-        val text = this.findViewById(R.id.tab_text) as TextView
-        val icon = this.findViewById(R.id.tab_icon) as ImageView
-        text.isSelected = isSelected
-        icon.isSelected = isSelected
-    }
+            override fun onTabReselected(position: Int) {
+                LogUtils.i(TAG," ---onTabReselected-  $position")
+            }
 
+        })
 
-    private fun selectedItem(position: Int) {
-        LogUtils.i("selected position [$position] ")
-        if (position > -1) {
-            home_pager.currentItem = position
-        } else {
+        home_tab.addTab("首页", resId = R.drawable.sel_tab_home)
+        home_tab.addTab("消息", resId = R.drawable.sel_tab_msg)
+        home_tab.addTab("", 0, -1)
+        home_tab.addTab("公社", resId = R.drawable.sel_tab_circle)
+        home_tab.addTab("我的", resId = R.drawable.sel_tab_my)
+
+        home_tab_center.setOnClickListener {
             LogUtils.i("发布信息")
+            Snackbar.make(home_pager, " 发布信息 ", Snackbar.LENGTH_LONG).show()
         }
     }
+
+    /* page OnPageChangeListener  */
+    override fun onPageScrollStateChanged(state: Int) {
+    }
+
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+
+    }
+
+    override fun onPageSelected(position: Int) {
+        LogUtils.i(TAG, " selectPosition ${home_tab.selectPosition}   ,  position $position")
+        home_tab.setSelected(position)
+    }
+    /* end page OnPageChangeListener  */
 
     override fun onBackPressed() {
-        val fragment=(home_pager.adapter as ZFragmentPagerAdapter).getItem(selectPosition) as BaseFragment
-        if(!fragment.onBackPressed()){
+        val fragment = (home_pager.adapter as ZFragmentPagerAdapter).getItem(home_tab.selectPosition) as BaseFragment
+        if (!fragment.onBackPressed()) {
             super.onBackPressed()
         }
     }

@@ -174,7 +174,7 @@ class HeadBehavior(context: Context?, attrs: AttributeSet?) : CoordinatorLayout.
 
     private fun createRunnable() {
         LogUtils.i(" childView  $mChildView")
-        if (mScrollRunnable == null && mChildView != null)
+        if (mScrollRunnable == null && mChildView!=null )
             mScrollRunnable = ScrollerRunnable(mScroller, mChildView!!, (mHeight).toInt())
     }
 
